@@ -6,12 +6,8 @@ Description: Defines the MemoryTree class that serves as the agents' spatial
 memory that aids in grounding their behavior in the game world. 
 """
 import json
-import sys
 
-sys.path.append('../../')
-
-from utils import *
-from global_methods import *
+from reverie.backend_server.global_methods import check_if_file_exists
 
 
 class MemoryTree:

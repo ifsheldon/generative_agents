@@ -4,13 +4,6 @@ Author: Joon Sung Park (joonspk@stanford.edu)
 File: print_prompt.py
 Description: For printing prompts when the setting for verbose is set to True.
 """
-import sys
-
-sys.path.append('../')
-
-from global_methods import *
-from persona.prompt_template.gpt_structure import *
-from utils import *
 
 
 ##############################################################################

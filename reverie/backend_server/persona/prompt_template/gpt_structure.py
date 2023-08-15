@@ -8,7 +8,7 @@ import json
 import openai
 import time
 
-from utils import *
+from reverie.backend_server.utils import openai_api_key
 
 openai.api_key = openai_api_key
 

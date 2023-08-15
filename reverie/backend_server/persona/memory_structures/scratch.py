@@ -6,11 +6,8 @@ Description: Defines the short-term memory module for generative agents.
 """
 import datetime
 import json
-import sys
 
-sys.path.append('../../')
-
-from global_methods import *
+from reverie.backend_server.global_methods import check_if_file_exists
 
 
 class Scratch:

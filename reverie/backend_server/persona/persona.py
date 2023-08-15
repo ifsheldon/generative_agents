@@ -8,22 +8,17 @@ Note (May 1, 2023) -- this is effectively GenerativeAgent class. Persona was
 the term we used internally back in 2022, taking from our Social Simulacra 
 paper.
 """
-import sys
 
-sys.path.append('../')
+from memory_structures.spatial_memory import *
+from memory_structures.associative_memory import *
+from memory_structures.scratch import *
 
-from global_methods import *
-
-from persona.memory_structures.spatial_memory import *
-from persona.memory_structures.associative_memory import *
-from persona.memory_structures.scratch import *
-
-from persona.cognitive_modules.perceive import *
-from persona.cognitive_modules.retrieve import *
-from persona.cognitive_modules.plan import *
-from persona.cognitive_modules.reflect import *
-from persona.cognitive_modules.execute import *
-from persona.cognitive_modules.converse import *
+from cognitive_modules.perceive import *
+from cognitive_modules.retrieve import *
+from cognitive_modules.plan import *
+from cognitive_modules.reflect import *
+from cognitive_modules.execute import *
+from cognitive_modules.converse import *
 
 
 class Persona:

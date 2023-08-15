@@ -5,11 +5,12 @@ File: global_methods.py
 Description: Contains functions used throughout my projects.
 """
 import csv
+import errno
 import os
-import numpy
-import shutil, errno
-
+import shutil
 from os import listdir
+
+import numpy
 
 
 def create_folder_if_not_there(curr_path):

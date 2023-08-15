@@ -6,6 +6,7 @@ Description: Defines the Maze class, which represents the map of the simulated
 world in a 2-dimensional matrix. 
 """
 import json
+import math
 
 from global_methods import *
 from utils import *

@@ -4,16 +4,16 @@ Author: Joon Sung Park (joonspk@stanford.edu)
 File: reflect.py
 Description: This defines the "Reflect" module for generative agents. 
 """
-import sys
 
-sys.path.append('../../')
+from reverie.backend_server.persona.cognitive_modules.retrieve import new_retrieve
+from reverie.backend_server.persona.prompt_template.gpt_structure import get_embedding
+from reverie.backend_server.persona.prompt_template.run_gpt_prompt import run_gpt_prompt_focal_pt, \
+    run_gpt_prompt_insight_and_guidance, run_gpt_prompt_event_triple, run_gpt_prompt_event_poignancy, \
+    run_gpt_prompt_chat_poignancy, run_gpt_prompt_planning_thought_on_convo, run_gpt_prompt_memo_on_convo
 
 import datetime
 
-from global_methods import *
-from persona.prompt_template.run_gpt_prompt import *
-from persona.prompt_template.gpt_structure import *
-from persona.cognitive_modules.retrieve import *
+from reverie.backend_server.utils import debug
 
 
 def generate_focal_points(persona, n=3):

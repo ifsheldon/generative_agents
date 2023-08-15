@@ -20,8 +20,6 @@ framework.
 """
 import traceback
 
-from global_methods import *
-from utils import *
 from maze import *
 from persona.persona import *
 

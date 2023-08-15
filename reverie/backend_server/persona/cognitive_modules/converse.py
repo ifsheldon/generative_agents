@@ -4,18 +4,9 @@ Author: Joon Sung Park (joonspk@stanford.edu)
 File: converse.py
 Description: An extra cognitive module for generating conversations. 
 """
-import sys
-import datetime
 
-sys.path.append('../')
-
-from global_methods import *
-
-from persona.memory_structures.spatial_memory import *
-from persona.memory_structures.associative_memory import *
-from persona.memory_structures.scratch import *
-from persona.cognitive_modules.retrieve import *
-from persona.prompt_template.run_gpt_prompt import *
+from reverie.backend_server.persona.cognitive_modules.retrieve import new_retrieve
+from reverie.backend_server.persona.prompt_template.run_gpt_prompt import *
 
 
 def generate_agent_chat_summarize_ideas(init_persona,

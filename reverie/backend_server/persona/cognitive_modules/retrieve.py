@@ -4,13 +4,8 @@ Author: Joon Sung Park (joonspk@stanford.edu)
 File: retrieve.py
 Description: This defines the "Retrieve" module for generative agents. 
 """
-import sys
 
-sys.path.append('../../')
-
-from global_methods import *
-from persona.prompt_template.gpt_structure import *
-
+from reverie.backend_server.persona.prompt_template.gpt_structure import get_embedding
 from numpy import dot
 from numpy.linalg import norm
 

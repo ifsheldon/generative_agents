@@ -7,14 +7,13 @@ interface with the safe_generate_response function.
 """
 import re
 import datetime
-import sys
+import string
 import ast
+import random
 
-sys.path.append('../../')
-
-from global_methods import *
-from persona.prompt_template.gpt_structure import *
-from persona.prompt_template.print_prompt import *
+from gpt_structure import *
+from print_prompt import *
+from reverie.backend_server.utils import debug
 
 
 def get_random_alphanumeric(i=6, j=6):
@@ -236,39 +235,6 @@ def run_gpt_prompt_generate_hourly_schedule(persona,
     def get_fail_safe():
         fs = "asleep"
         return fs
-
-    # # ChatGPT Plugin ===========================================================
-    # def __chat_func_clean_up(gpt_response, prompt=""): ############
-    #   cr = gpt_response.strip()
-    #   if cr[-1] == ".":
-    #     cr = cr[:-1]
-    #   return cr
-
-    # def __chat_func_validate(gpt_response, prompt=""): ############
-    #   try: __func_clean_up(gpt_response, prompt="")
-    #   except: return False
-    #   return True
-
-    # print ("asdhfapsh8p9hfaiafdsi;ldfj as DEBUG 10") ########
-    # gpt_param = {"engine": "text-davinci-002", "max_tokens": 15,
-    #              "temperature": 0, "top_p": 1, "stream": False,
-    #              "frequency_penalty": 0, "presence_penalty": 0, "stop": None}
-    # prompt_template = "persona/prompt_template/v3_ChatGPT/generate_hourly_schedule_v2.txt" ########
-    # prompt_input = create_prompt_input(persona,
-    #                                    curr_hour_str,
-    #                                    p_f_ds_hourly_org,
-    #                                    hour_str,
-    #                                    intermission2,
-    #                                    test_input)  ########
-    # prompt = generate_prompt(prompt_input, prompt_template)
-    # example_output = "studying for her music classes" ########
-    # special_instruction = "The output should ONLY include the part of the sentence that completes the last line in the schedule above." ########
-    # fail_safe = get_fail_safe() ########
-    # output = ChatGPT_safe_generate_response(prompt, example_output, special_instruction, 3, fail_safe,
-    #                                         __chat_func_validate, __chat_func_clean_up, True)
-    # if output != False:
-    #   return output, [output, prompt, gpt_param, prompt_input, fail_safe]
-    # # ChatGPT Plugin ===========================================================
 
     gpt_param = {"engine": "text-davinci-003", "max_tokens": 50,
                  "temperature": 0.5, "top_p": 1, "stream": False,
@@ -2222,30 +2188,6 @@ def run_gpt_prompt_agent_chat(maze, persona, target_persona,
     # print ("HERE END JULY 23 -- ----- ") ########
     if output != False:
         return output, [output, prompt, gpt_param, prompt_input, fail_safe]
-    # ChatGPT Plugin ===========================================================
-
-    # gpt_param = {"engine": "text-davinci-003", "max_tokens": 2000,
-    #              "temperature": 0.7, "top_p": 1, "stream": False,
-    #              "frequency_penalty": 0, "presence_penalty": 0, "stop": None}
-    # prompt_template = "persona/prompt_template/v2/agent_chat_v1.txt"
-    # prompt_input = create_prompt_input(persona, target_persona, curr_context, init_summ_idea, target_summ_idea)
-    # prompt = generate_prompt(prompt_input, prompt_template)
-
-    # fail_safe = get_fail_safe()
-    # output = safe_generate_response(prompt, gpt_param, 5, fail_safe,
-    #                                  __func_validate, __func_clean_up)
-
-    # if debug or verbose:
-    #   print_run_prompts(prompt_template, persona, gpt_param,
-    #                     prompt_input, prompt, output)
-
-    # return output, [output, prompt, gpt_param, prompt_input, fail_safe]
-
-
-# =======================
-# =======================
-# =======================
-# =======================
 
 
 def run_gpt_prompt_summarize_ideas(persona, statements, question, test_input=None, verbose=False):
