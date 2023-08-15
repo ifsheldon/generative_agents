@@ -240,28 +240,3 @@ def reflect(persona):
                                 thought_embedding_pair, evidence)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

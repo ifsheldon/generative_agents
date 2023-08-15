@@ -2306,25 +2306,7 @@ def run_gpt_prompt_agent_chat_summarize_relationship(persona, target_persona, st
                                           __chat_func_validate, __chat_func_clean_up, True)
   if output != False: 
     return output, [output, prompt, gpt_param, prompt_input, fail_safe]
-  # ChatGPT Plugin ===========================================================
 
-
-  # gpt_param = {"engine": "text-davinci-003", "max_tokens": 150, 
-  #              "temperature": 0.5, "top_p": 1, "stream": False,
-  #              "frequency_penalty": 0, "presence_penalty": 0, "stop": None}
-  # prompt_template = "persona/prompt_template/v2/summarize_chat_relationship_v1.txt"
-  # prompt_input = create_prompt_input(persona, target_persona, statements)
-  # prompt = generate_prompt(prompt_input, prompt_template)
-
-  # fail_safe = get_fail_safe()
-  # output = safe_generate_response(prompt, gpt_param, 5, fail_safe,
-  #                                  __func_validate, __func_clean_up)
-
-  # if debug or verbose: 
-  #   print_run_prompts(prompt_template, persona, gpt_param, 
-  #                     prompt_input, prompt, output)
-  
-  # return output, [output, prompt, gpt_param, prompt_input, fail_safe]
 
 
 
@@ -2515,25 +2497,6 @@ def run_gpt_prompt_summarize_ideas(persona, statements, question, test_input=Non
                                           __chat_func_validate, __chat_func_clean_up, True)
   if output != False: 
     return output, [output, prompt, gpt_param, prompt_input, fail_safe]
-  # ChatGPT Plugin ===========================================================
-
-
-  # gpt_param = {"engine": "text-davinci-003", "max_tokens": 150, 
-  #              "temperature": 0.5, "top_p": 1, "stream": False,
-  #              "frequency_penalty": 0, "presence_penalty": 0, "stop": None}
-  # prompt_template = "persona/prompt_template/v2/summarize_ideas_v1.txt"
-  # prompt_input = create_prompt_input(persona, statements, question)
-  # prompt = generate_prompt(prompt_input, prompt_template)
-
-  # fail_safe = get_fail_safe()
-  # output = safe_generate_response(prompt, gpt_param, 5, fail_safe,
-  #                                  __func_validate, __func_clean_up)
-
-  # if debug or verbose: 
-  #   print_run_prompts(prompt_template, persona, gpt_param, 
-  #                     prompt_input, prompt, output)
-  
-  # return output, [output, prompt, gpt_param, prompt_input, fail_safe]
 
 
 
@@ -2564,32 +2527,6 @@ def run_gpt_prompt_generate_next_convo_line(persona, interlocutor_desc, prev_con
 
 
 
-  # # ChatGPT Plugin ===========================================================
-  # def __chat_func_clean_up(gpt_response, prompt=""): ############
-  #   return gpt_response.split('"')[0].strip()
-
-  # def __chat_func_validate(gpt_response, prompt=""): ############
-  #   try: 
-  #     __func_clean_up(gpt_response, prompt)
-  #     return True
-  #   except:
-  #     return False 
-
-  # print ("asdhfapsh8p9hfaiafdsi;ldfj as DEBUG 15") ########
-  # gpt_param = {"engine": "text-davinci-002", "max_tokens": 15, 
-  #              "temperature": 0, "top_p": 1, "stream": False,
-  #              "frequency_penalty": 0, "presence_penalty": 0, "stop": None}
-  # prompt_template = "persona/prompt_template/v3_ChatGPT/generate_next_convo_line_v1.txt" ########
-  # prompt_input = create_prompt_input(persona, interlocutor_desc, prev_convo, retrieved_summary)  ########
-  # prompt = generate_prompt(prompt_input, prompt_template)
-  # example_output = 'Hello' ########
-  # special_instruction = 'The output should be a string that responds to the question. Again, only use the context included in the "Note" to generate the response' ########
-  # fail_safe = get_fail_safe() ########
-  # output = ChatGPT_safe_generate_response(prompt, example_output, special_instruction, 3, fail_safe,
-  #                                         __chat_func_validate, __chat_func_clean_up, True)
-  # if output != False: 
-  #   return output, [output, prompt, gpt_param, prompt_input, fail_safe]
-  # # ChatGPT Plugin ===========================================================
 
 
 

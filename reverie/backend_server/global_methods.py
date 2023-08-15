@@ -218,11 +218,6 @@ def copyanything(src, dst):
     else: raise
 
 
-if __name__ == '__main__':
-  pass
-
-
-
 
 
 

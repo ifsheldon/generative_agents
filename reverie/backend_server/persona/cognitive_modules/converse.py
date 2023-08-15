@@ -287,35 +287,3 @@ def open_convo_session(persona, convo_mode):
     persona.a_mem.add_thought(created, expiration, s, p, o, 
                               thought, keywords, thought_poignancy, 
                               thought_embedding_pair, None)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
