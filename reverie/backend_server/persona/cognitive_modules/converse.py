@@ -119,7 +119,7 @@ def agent_chat_v2(maze, init_persona, target_persona):
     curr_chat = []
     print("July 23")
 
-    for i in range(8):
+    for _ in range(8):
         focal_points = [f"{target_persona.scratch.name}"]
         retrieved = new_retrieve(init_persona, focal_points, 50)
         relationship = generate_summarize_agent_relationship(init_persona, target_persona, retrieved)
@@ -207,12 +207,14 @@ def generate_action_event_triple(act_desp, persona):
     EXAMPLE OUTPUT:
       "🧈🍞"
     """
-    if debug: print("GNS FUNCTION: <generate_action_event_triple>")
+    if debug:
+        print("GNS FUNCTION: <generate_action_event_triple>")
     return run_gpt_prompt_event_triple(act_desp, persona)[0]
 
 
 def generate_poig_score(persona, event_type, description):
-    if debug: print("GNS FUNCTION: <generate_poig_score>")
+    if debug:
+        print("GNS FUNCTION: <generate_poig_score>")
 
     if "is idle" in description:
         return 1
@@ -264,11 +266,9 @@ def open_convo_session(persona, convo_mode):
                 next_line = generate_next_line(persona, interlocutor_desc, curr_convo, summarized_idea)
                 curr_convo += [[persona.scratch.name, next_line]]
 
-
     elif convo_mode == "whisper":
         whisper = input("Enter Input: ")
         thought = generate_inner_thought(persona, whisper)
-
         created = persona.scratch.curr_time
         expiration = persona.scratch.curr_time + datetime.timedelta(days=30)
         s, p, o = generate_action_event_triple(thought, persona)

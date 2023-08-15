@@ -40,9 +40,8 @@ def path_finder_v1(maze, start, end, collision_block_char, verbose=False):
         path = []
         # We use a Python list as a stack - then we have push operations as
         # append, and pop as pop.
-        stack = []
+        stack = [start]
         # Add the entry point (as a tuple)
-        stack.append(start)
         # Go through the stack as long as there are elements
         while len(stack) > 0:
             pos_r, pos_c = stack.pop()

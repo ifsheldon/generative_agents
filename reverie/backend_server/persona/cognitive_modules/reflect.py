@@ -17,7 +17,8 @@ from reverie.backend_server.utils import debug
 
 
 def generate_focal_points(persona, n=3):
-    if debug: print("GNS FUNCTION: <generate_focal_points>")
+    if debug:
+        print("GNS FUNCTION: <generate_focal_points>")
 
     nodes = [[i.last_accessed, i]
              for i in persona.a_mem.seq_event + persona.a_mem.seq_thought
@@ -34,7 +35,8 @@ def generate_focal_points(persona, n=3):
 
 
 def generate_insights_and_evidence(persona, nodes, n=5):
-    if debug: print("GNS FUNCTION: <generate_insights_and_evidence>")
+    if debug:
+        print("GNS FUNCTION: <generate_insights_and_evidence>")
 
     statements = ""
     for count, node in enumerate(nodes):
@@ -64,12 +66,14 @@ def generate_action_event_triple(act_desp, persona):
     EXAMPLE OUTPUT:
       "🧈🍞"
     """
-    if debug: print("GNS FUNCTION: <generate_action_event_triple>")
+    if debug:
+        print("GNS FUNCTION: <generate_action_event_triple>")
     return run_gpt_prompt_event_triple(act_desp, persona)[0]
 
 
 def generate_poig_score(persona, event_type, description):
-    if debug: print("GNS FUNCTION: <generate_poig_score>")
+    if debug:
+        print("GNS FUNCTION: <generate_poig_score>")
 
     if "is idle" in description:
         return 1
@@ -82,12 +86,14 @@ def generate_poig_score(persona, event_type, description):
 
 
 def generate_planning_thought_on_convo(persona, all_utt):
-    if debug: print("GNS FUNCTION: <generate_planning_thought_on_convo>")
+    if debug:
+        print("GNS FUNCTION: <generate_planning_thought_on_convo>")
     return run_gpt_prompt_planning_thought_on_convo(persona, all_utt)[0]
 
 
 def generate_memo_on_convo(persona, all_utt):
-    if debug: print("GNS FUNCTION: <generate_memo_on_convo>")
+    if debug:
+        print("GNS FUNCTION: <generate_memo_on_convo>")
     return run_gpt_prompt_memo_on_convo(persona, all_utt)[0]
 
 
@@ -111,14 +117,15 @@ def run_reflect(persona):
     # agent's memory.
     for focal_pt, nodes in retrieved.items():
         xx = [i.embedding_key for i in nodes]
-        for xxx in xx: print(xxx)
+        for xxx in xx:
+            print(xxx)
 
         thoughts = generate_insights_and_evidence(persona, nodes, 5)
         for thought, evidence in thoughts.items():
             created = persona.scratch.curr_time
             expiration = persona.scratch.curr_time + datetime.timedelta(days=30)
             s, p, o = generate_action_event_triple(thought, persona)
-            keywords = set([s, p, o])
+            keywords = {s, p, o}
             thought_poignancy = generate_poig_score(persona, "thought", thought)
             thought_embedding_pair = (thought, get_embedding(thought))
 
@@ -211,7 +218,7 @@ def reflect(persona):
             created = persona.scratch.curr_time
             expiration = persona.scratch.curr_time + datetime.timedelta(days=30)
             s, p, o = generate_action_event_triple(planning_thought, persona)
-            keywords = set([s, p, o])
+            keywords = {s, p, o}
             thought_poignancy = generate_poig_score(persona, "thought", planning_thought)
             thought_embedding_pair = (planning_thought, get_embedding(planning_thought))
 
@@ -225,7 +232,7 @@ def reflect(persona):
             created = persona.scratch.curr_time
             expiration = persona.scratch.curr_time + datetime.timedelta(days=30)
             s, p, o = generate_action_event_triple(memo_thought, persona)
-            keywords = set([s, p, o])
+            keywords = {s, p, o}
             thought_poignancy = generate_poig_score(persona, "thought", memo_thought)
             thought_embedding_pair = (memo_thought, get_embedding(memo_thought))
 

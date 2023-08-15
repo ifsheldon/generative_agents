@@ -51,22 +51,26 @@ class Maze:
         _sb = blocks_folder + "/sector_blocks.csv"
         sb_rows = read_file_to_list(_sb, header=False)
         sb_dict = dict()
-        for i in sb_rows: sb_dict[i[0]] = i[-1]
+        for i in sb_rows:
+            sb_dict[i[0]] = i[-1]
 
         _ab = blocks_folder + "/arena_blocks.csv"
         ab_rows = read_file_to_list(_ab, header=False)
         ab_dict = dict()
-        for i in ab_rows: ab_dict[i[0]] = i[-1]
+        for i in ab_rows:
+            ab_dict[i[0]] = i[-1]
 
         _gob = blocks_folder + "/game_object_blocks.csv"
         gob_rows = read_file_to_list(_gob, header=False)
         gob_dict = dict()
-        for i in gob_rows: gob_dict[i[0]] = i[-1]
+        for i in gob_rows:
+            gob_dict[i[0]] = i[-1]
 
         _slb = blocks_folder + "/spawning_location_blocks.csv"
         slb_rows = read_file_to_list(_slb, header=False)
         slb_dict = dict()
-        for i in slb_rows: slb_dict[i[0]] = i[-1]
+        for i in slb_rows:
+            slb_dict[i[0]] = i[-1]
 
         # [SECTION 3] Reading in the matrices
         # This is your typical two dimensional matrices. It's made up of 0s and
@@ -216,7 +220,7 @@ class Maze:
         """
         x = math.ceil(px_coordinate[0] / self.sq_tile_size)
         y = math.ceil(px_coordinate[1] / self.sq_tile_size)
-        return (x, y)
+        return x, y
 
     def access_tile(self, tile):
         """

@@ -38,7 +38,7 @@ class ConceptNode:
         self.filling = filling
 
     def spo_summary(self):
-        return (self.subject, self.predicate, self.object)
+        return self.subject, self.predicate, self.object
 
 
 class AssociativeMemory:
@@ -63,10 +63,7 @@ class AssociativeMemory:
             node_id = f"node_{str(count + 1)}"
             node_details = nodes_load[node_id]
 
-            node_count = node_details["node_count"]
-            type_count = node_details["type_count"]
             node_type = node_details["type"]
-            depth = node_details["depth"]
 
             created = datetime.datetime.strptime(node_details["created"],
                                                  '%Y-%m-%d %H:%M:%S')

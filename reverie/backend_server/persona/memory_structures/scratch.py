@@ -440,13 +440,13 @@ class Scratch:
 
     def get_curr_event(self):
         if not self.act_address:
-            return (self.name, None, None)
+            return self.name, None, None
         else:
             return self.act_event
 
     def get_curr_event_and_desc(self):
         if not self.act_address:
-            return (self.name, None, None, None)
+            return self.name, None, None, None
         else:
             return (self.act_event[0],
                     self.act_event[1],
@@ -455,7 +455,7 @@ class Scratch:
 
     def get_curr_obj_event_and_desc(self):
         if not self.act_address:
-            return ("", None, None, None)
+            return "", None, None, None
         else:
             return (self.act_address,
                     self.act_obj_event[1],

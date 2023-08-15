@@ -29,7 +29,8 @@ def generate_wake_up_hour(persona):
     EXAMPLE OUTPUT:
       8
     """
-    if debug: print("GNS FUNCTION: <generate_wake_up_hour>")
+    if debug:
+        print("GNS FUNCTION: <generate_wake_up_hour>")
     return int(run_gpt_prompt_wake_up_hour(persona)[0])
 
 
@@ -59,7 +60,8 @@ def generate_first_daily_plan(persona, wake_up_hour):
        'work on painting project from 4:00 pm to 6:00 pm',
        'have dinner at 6:00 pm', 'watch TV from 7:00 pm to 8:00 pm']
     """
-    if debug: print("GNS FUNCTION: <generate_first_daily_plan>")
+    if debug:
+        print("GNS FUNCTION: <generate_first_daily_plan>")
     return run_gpt_prompt_daily_plan(persona, wake_up_hour)[0]
 
 
@@ -82,7 +84,8 @@ def generate_hourly_schedule(persona, wake_up_hour):
       [['sleeping', 360], ['waking up and starting her morning routine', 60],
        ['eating breakfast', 60],..
     """
-    if debug: print("GNS FUNCTION: <generate_hourly_schedule>")
+    if debug:
+        print("GNS FUNCTION: <generate_hourly_schedule>")
 
     hour_str = ["00:00 AM", "01:00 AM", "02:00 AM", "03:00 AM", "04:00 AM",
                 "05:00 AM", "06:00 AM", "07:00 AM", "08:00 AM", "09:00 AM",
@@ -155,7 +158,8 @@ def generate_task_decomp(persona, task, duration):
        ['starting to work on her painting', 15]]
 
     """
-    if debug: print("GNS FUNCTION: <generate_task_decomp>")
+    if debug:
+        print("GNS FUNCTION: <generate_task_decomp>")
     return run_gpt_prompt_task_decomp(persona, task, duration)[0]
 
 
@@ -173,7 +177,8 @@ def generate_action_sector(act_desp, persona, maze):
     EXAMPLE OUTPUT:
       "bedroom 2"
     """
-    if debug: print("GNS FUNCTION: <generate_action_sector>")
+    if debug:
+        print("GNS FUNCTION: <generate_action_sector>")
     return run_gpt_prompt_action_sector(act_desp, persona, maze)[0]
 
 
@@ -191,7 +196,8 @@ def generate_action_arena(act_desp, persona, maze, act_world, act_sector):
     EXAMPLE OUTPUT:
       "bedroom 2"
     """
-    if debug: print("GNS FUNCTION: <generate_action_arena>")
+    if debug:
+        print("GNS FUNCTION: <generate_action_arena>")
     return run_gpt_prompt_action_arena(act_desp, persona, maze, act_world, act_sector)[0]
 
 
@@ -212,7 +218,8 @@ def generate_action_game_object(act_desp, act_address, persona, maze):
     EXAMPLE OUTPUT:
       "bed"
     """
-    if debug: print("GNS FUNCTION: <generate_action_game_object>")
+    if debug:
+        print("GNS FUNCTION: <generate_action_game_object>")
     if not persona.s_mem.get_str_accessible_arena_game_objects(act_address):
         return "<random>"
     return run_gpt_prompt_action_game_object(act_desp, persona, maze, act_address)[0]
@@ -233,7 +240,8 @@ def generate_action_pronunciatio(act_desp, persona):
     EXAMPLE OUTPUT:
       "🧈🍞"
     """
-    if debug: print("GNS FUNCTION: <generate_action_pronunciatio>")
+    if debug:
+        print("GNS FUNCTION: <generate_action_pronunciatio>")
     try:
         x = run_gpt_prompt_pronunciatio(act_desp, persona)[0]
     except:
@@ -255,22 +263,25 @@ def generate_action_event_triple(act_desp, persona):
     EXAMPLE OUTPUT:
       "🧈🍞"
     """
-    if debug: print("GNS FUNCTION: <generate_action_event_triple>")
+    if debug:
+        print("GNS FUNCTION: <generate_action_event_triple>")
     return run_gpt_prompt_event_triple(act_desp, persona)[0]
 
 
 def generate_act_obj_desc(act_game_object, act_desp, persona):
-    if debug: print("GNS FUNCTION: <generate_act_obj_desc>")
+    if debug:
+        print("GNS FUNCTION: <generate_act_obj_desc>")
     return run_gpt_prompt_act_obj_desc(act_game_object, act_desp, persona)[0]
 
 
 def generate_act_obj_event_triple(act_game_object, act_obj_desc, persona):
-    if debug: print("GNS FUNCTION: <generate_act_obj_event_triple>")
+    if debug:
+        print("GNS FUNCTION: <generate_act_obj_event_triple>")
     return run_gpt_prompt_act_obj_event_triple(act_game_object, act_obj_desc, persona)[0]
 
 
 def generate_convo(maze, init_persona, target_persona):
-    curr_loc = maze.access_tile(init_persona.scratch.curr_tile)
+    maze.access_tile(init_persona.scratch.curr_tile)
 
     # convo = run_gpt_prompt_create_conversation(init_persona, target_persona, curr_loc)[0]
     # convo = agent_chat_v1(maze, init_persona, target_persona)
@@ -284,7 +295,8 @@ def generate_convo(maze, init_persona, target_persona):
 
     convo_length = math.ceil(int(len(all_utt) / 8) / 30)
 
-    if debug: print("GNS FUNCTION: <generate_convo>")
+    if debug:
+        print("GNS FUNCTION: <generate_convo>")
     return convo, convo_length
 
 
@@ -295,7 +307,8 @@ def generate_convo_summary(persona, convo):
 
 def generate_decide_to_talk(init_persona, target_persona, retrieved):
     x = run_gpt_prompt_decide_to_talk(init_persona, target_persona, retrieved)[0]
-    if debug: print("GNS FUNCTION: <generate_decide_to_talk>")
+    if debug:
+        print("GNS FUNCTION: <generate_decide_to_talk>")
 
     if x == "yes":
         return True
@@ -304,7 +317,8 @@ def generate_decide_to_talk(init_persona, target_persona, retrieved):
 
 
 def generate_decide_to_react(init_persona, target_persona, retrieved):
-    if debug: print("GNS FUNCTION: <generate_decide_to_react>")
+    if debug:
+        print("GNS FUNCTION: <generate_decide_to_react>")
     return run_gpt_prompt_decide_to_react(init_persona, target_persona, retrieved)[0]
 
 
@@ -369,7 +383,6 @@ def generate_new_decomp_schedule(persona, inserted_act, inserted_act_dur, start_
         dur_sum += dur
         count += 1
 
-    persona_name = persona.name
     main_act_dur = main_act_dur
 
     x = truncated_act_dur[-1][0].split("(")[0].strip() + " (on the way to " + truncated_act_dur[-1][0].split("(")[-1][
@@ -388,7 +401,8 @@ def generate_new_decomp_schedule(persona, inserted_act, inserted_act_dur, start_
     end_time_hour = (datetime.datetime(2022, 10, 31, 0, 0)
                      + datetime.timedelta(hours=end_hour))
 
-    if debug: print("GNS FUNCTION: <generate_new_decomp_schedule>")
+    if debug:
+        print("GNS FUNCTION: <generate_new_decomp_schedule>")
     return run_gpt_prompt_new_decomp_schedule(persona,
                                               main_act_dur,
                                               truncated_act_dur,
@@ -592,7 +606,8 @@ def _determine_action(persona, maze):
     # this point, we assume that all the relevant actions are decomposed and
     # ready in f_daily_schedule.
     print("DEBUG LJSDLFSKJF")
-    for i in persona.scratch.f_daily_schedule: print(i)
+    for i in persona.scratch.f_daily_schedule:
+        print(i)
     print(curr_index)
     print(len(persona.scratch.f_daily_schedule))
     print(persona.scratch.name)
@@ -725,7 +740,7 @@ def _should_react(persona, retrieved, personas):
                 or init_persona.scratch.chatting_with):
             return False
 
-        if (target_persona.name in init_persona.scratch.chatting_with_buffer):
+        if target_persona.name in init_persona.scratch.chatting_with_buffer:
             if init_persona.scratch.chatting_with_buffer[target_persona.name] > 0:
                 return False
 
@@ -754,8 +769,7 @@ def _should_react(persona, retrieved, personas):
         if init_persona.scratch.planned_path == []:
             return False
 
-        if (init_persona.scratch.act_address
-                != target_persona.scratch.act_address):
+        if init_persona.scratch.act_address != target_persona.scratch.act_address:
             return False
 
         react_mode = generate_decide_to_react(init_persona,
@@ -806,7 +820,7 @@ def _create_react(persona, inserted_act, inserted_act_dur,
         min_sum += p.scratch.f_daily_schedule_hourly_org[i][1]
     start_hour = int(min_sum / 60)
 
-    if (p.scratch.f_daily_schedule_hourly_org[p.scratch.get_f_daily_schedule_hourly_org_index()][1] >= 120):
+    if p.scratch.f_daily_schedule_hourly_org[p.scratch.get_f_daily_schedule_hourly_org_index()][1] >= 120:
         end_hour = start_hour + \
                    p.scratch.f_daily_schedule_hourly_org[p.scratch.get_f_daily_schedule_hourly_org_index()][1] / 60
 
@@ -826,9 +840,9 @@ def _create_react(persona, inserted_act, inserted_act_dur,
     start_index = None
     end_index = None
     for act, dur in p.scratch.f_daily_schedule:
-        if dur_sum >= start_hour * 60 and start_index == None:
+        if dur_sum >= start_hour * 60 and start_index is None:
             start_index = count
-        if dur_sum >= end_hour * 60 and end_index == None:
+        if dur_sum >= end_hour * 60 and end_index is None:
             end_index = count
         dur_sum += dur
         count += 1
@@ -856,7 +870,6 @@ def _chat_react(maze, persona, focused_event, reaction_mode, personas):
     # and the persona who is the target. We get the persona instances here.
     init_persona = persona
     target_persona = personas[reaction_mode[9:].strip()]
-    curr_personas = [init_persona, target_persona]
 
     # Actually creating the conversation here.
     convo, duration_min = generate_convo(maze, init_persona, target_persona)
@@ -878,14 +891,12 @@ def _chat_react(maze, persona, focused_event, reaction_mode, personas):
             act_address = f"<persona> {target_persona.name}"
             act_event = (p.name, "chat with", target_persona.name)
             chatting_with = target_persona.name
-            chatting_with_buffer = {}
-            chatting_with_buffer[target_persona.name] = 800
+            chatting_with_buffer = {target_persona.name: 800}
         elif role == "target":
             act_address = f"<persona> {init_persona.name}"
             act_event = (p.name, "chat with", init_persona.name)
             chatting_with = init_persona.name
-            chatting_with_buffer = {}
-            chatting_with_buffer[init_persona.name] = 800
+            chatting_with_buffer = {init_persona.name: 800}
 
         act_pronunciatio = "💬"
         act_obj_description = None
