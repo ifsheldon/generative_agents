@@ -8,7 +8,7 @@ world in a 2-dimensional matrix.
 import json
 import math
 
-from global_methods import *
+from ..global_methods import *
 from utils import *
 
 

@@ -7,7 +7,7 @@ memory that aids in grounding their behavior in the game world.
 """
 import json
 
-from reverie.backend_server.global_methods import check_if_file_exists
+from reverie.global_methods import check_if_file_exists
 
 
 class MemoryTree:

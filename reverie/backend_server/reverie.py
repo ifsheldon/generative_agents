@@ -213,9 +213,8 @@ class ReverieServer:
         s_mem = dict()
 
         # The main while loop for the test agent.
-        while (True):
+        while True:
             try:
-                curr_dict = {}
                 tester_file = fs_temp_storage + "/path_tester_env.json"
                 if check_if_file_exists(tester_file):
                     with open(tester_file) as json_file:
@@ -290,7 +289,7 @@ class ReverieServer:
         game_obj_cleanup = dict()
 
         # The main while loop of Reverie.
-        while (True):
+        while True:
             # Done with this iteration if <int_counter> reaches 0.
             if int_counter == 0:
                 break
@@ -341,8 +340,7 @@ class ReverieServer:
                         if not persona.scratch.planned_path:
                             # We add that new object action event to the backend tile map.
                             # At its creation, it is stored in the persona's backend.
-                            game_obj_cleanup[persona.scratch
-                            .get_curr_obj_event_and_desc()] = new_tile
+                            game_obj_cleanup[persona.scratch.get_curr_obj_event_and_desc()] = new_tile
                             self.maze.add_event_from_tile(persona.scratch
                                                           .get_curr_obj_event_and_desc(), new_tile)
                             # We also need to remove the temporary blank action for the
