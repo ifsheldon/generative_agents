@@ -8,10 +8,7 @@ Note (May 1, 2023) -- this is effectively GenerativeAgent class. Persona was
 the term we used internally back in 2022, taking from our Social Simulacra 
 paper.
 """
-import math
 import sys
-import datetime
-import random
 sys.path.append('../')
 
 from global_methods import *

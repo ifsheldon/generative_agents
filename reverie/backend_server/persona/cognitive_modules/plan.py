@@ -8,7 +8,6 @@ import datetime
 import math
 import random 
 import sys
-import time
 sys.path.append('../../')
 
 from global_methods import *

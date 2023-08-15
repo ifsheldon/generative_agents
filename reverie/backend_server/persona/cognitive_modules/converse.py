@@ -4,10 +4,8 @@ Author: Joon Sung Park (joonspk@stanford.edu)
 File: converse.py
 Description: An extra cognitive module for generating conversations. 
 """
-import math
 import sys
 import datetime
-import random
 sys.path.append('../')
 
 from global_methods import *

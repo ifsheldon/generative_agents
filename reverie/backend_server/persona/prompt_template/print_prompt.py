@@ -7,11 +7,6 @@ Description: For printing prompts when the setting for verbose is set to True.
 import sys
 sys.path.append('../')
 
-import json
-import numpy
-import datetime
-import random
-
 from global_methods import *
 from persona.prompt_template.gpt_structure import *
 from utils import *

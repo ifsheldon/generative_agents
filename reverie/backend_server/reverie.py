@@ -18,17 +18,7 @@ term "personas" to refer to generative agents, "associative memory" to refer
 to the memory stream, and "reverie" to refer to the overarching simulation 
 framework.
 """
-import json
-import numpy
-import datetime
-import pickle
-import time
-import math
-import os
-import shutil
 import traceback
-
-from selenium import webdriver
 
 from global_methods import *
 from utils import *

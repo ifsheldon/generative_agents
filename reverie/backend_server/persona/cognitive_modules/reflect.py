@@ -8,10 +8,6 @@ import sys
 sys.path.append('../../')
 
 import datetime
-import random
-
-from numpy import dot
-from numpy.linalg import norm
 
 from global_methods import *
 from persona.prompt_template.run_gpt_prompt import *
