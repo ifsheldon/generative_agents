@@ -555,9 +555,6 @@ def run_gpt_prompt_action_arena(action_description,
                                 verbose=False):
     def create_prompt_input(action_description, persona, maze, act_world, act_sector, test_input=None):
         prompt_input = []
-        # prompt_input += [persona.scratch.get_str_name()]
-        # prompt_input += [maze.access_tile(persona.scratch.curr_tile)["arena"]]
-        # prompt_input += [maze.access_tile(persona.scratch.curr_tile)["sector"]]
         prompt_input += [persona.scratch.get_str_name()]
         x = f"{act_world}:{act_sector}"
         prompt_input += [act_sector]
@@ -591,9 +588,6 @@ def run_gpt_prompt_action_arena(action_description,
         prompt_input += [act_sector]
 
         prompt_input += [accessible_arena_str]
-        # prompt_input += [maze.access_tile(persona.scratch.curr_tile)["arena"]]
-        # x = f"{maze.access_tile(persona.scratch.curr_tile)['world']}:{maze.access_tile(persona.scratch.curr_tile)['sector']}:{maze.access_tile(persona.scratch.curr_tile)['arena']}"
-        # prompt_input += [persona.s_mem.get_str_accessible_arena_game_objects(x)]
 
         return prompt_input
 
@@ -625,10 +619,6 @@ def run_gpt_prompt_action_arena(action_description,
     output = safe_generate_response(prompt, gpt_param, 5, fail_safe,
                                     __func_validate, __func_clean_up)
     print(output)
-    # y = f"{act_world}:{act_sector}"
-    # x = [i.strip() for i in persona.s_mem.get_str_accessible_sector_arenas(y).split(",")]
-    # if output not in x:
-    #   output = random.choice(x)
 
     if debug or verbose:
         print_run_prompts(prompt_template, persona, gpt_param,
@@ -769,36 +759,6 @@ def run_gpt_prompt_event_triple(action_description, persona, verbose=False):
     def get_fail_safe(persona):
         fs = (persona.name, "is", "idle")
         return fs
-
-    # ChatGPT Plugin ===========================================================
-    # def __chat_func_clean_up(gpt_response, prompt=""): 
-    #   cr = gpt_response.strip()
-    #   cr = [i.strip() for i in cr.split(")")[0].split(",")]
-    #   return cr
-
-    # def __chat_func_validate(gpt_response, prompt=""): 
-    #   try:
-    #     gpt_response = __func_clean_up(gpt_response, prompt="")
-    #     if len(gpt_response) != 2:
-    #       return False
-    #   except: return False
-    #   return True
-
-    # print ("asdhfapsh8p9hfaiafdsi;ldfj as DEBUG 5") 
-    # gpt_param = {"engine": "text-davinci-002", "max_tokens": 15,
-    #              "temperature": 0, "top_p": 1, "stream": False,
-    #              "frequency_penalty": 0, "presence_penalty": 0, "stop": None}
-    # prompt_template = "persona/prompt_template/v3_ChatGPT/generate_event_triple_v1.txt" 
-    # prompt_input = create_prompt_input(action_description, persona)  
-    # prompt = generate_prompt(prompt_input, prompt_template)
-    # example_output = "(Jane Doe, cooking, breakfast)" 
-    # special_instruction = "The value for the output must ONLY contain the triple. If there is an incomplete element, just say 'None' but there needs to be three elements no matter what." 
-    # fail_safe = get_fail_safe(persona) 
-    # output = ChatGPT_safe_generate_response(prompt, example_output, special_instruction, 3, fail_safe,
-    #                                         __chat_func_validate, __chat_func_clean_up, True)
-    # if output != False:
-    #   return output, [output, prompt, gpt_param, prompt_input, fail_safe]
-    # ChatGPT Plugin ===========================================================
 
     gpt_param = {"engine": "text-davinci-003", "max_tokens": 30,
                  "temperature": 0, "top_p": 1, "stream": False,
@@ -1612,24 +1572,6 @@ def run_gpt_prompt_event_poignancy(persona, event_description, test_input=None, 
                                             __chat_func_validate, __chat_func_clean_up, True)
     if output != False:
         return output, [output, prompt, gpt_param, prompt_input, fail_safe]
-    # ChatGPT Plugin ===========================================================
-
-    # gpt_param = {"engine": "text-davinci-003", "max_tokens": 3,
-    #              "temperature": 0, "top_p": 1, "stream": False,
-    #              "frequency_penalty": 0, "presence_penalty": 0, "stop": None}
-    # prompt_template = "persona/prompt_template/v2/poignancy_event_v1.txt"
-    # prompt_input = create_prompt_input(persona, event_description)
-    # prompt = generate_prompt(prompt_input, prompt_template)
-
-    # fail_safe = get_fail_safe()
-    # output = safe_generate_response(prompt, gpt_param, 5, fail_safe,
-    #                                  __func_validate, __func_clean_up)
-
-    # if debug or verbose:
-    #   print_run_prompts(prompt_template, persona, gpt_param,
-    #                     prompt_input, prompt, output)
-
-    # return output, [output, prompt, gpt_param, prompt_input, fail_safe]
 
 
 def run_gpt_prompt_thought_poignancy(persona, event_description, test_input=None, verbose=False):
@@ -1680,24 +1622,6 @@ def run_gpt_prompt_thought_poignancy(persona, event_description, test_input=None
                                             __chat_func_validate, __chat_func_clean_up, True)
     if output != False:
         return output, [output, prompt, gpt_param, prompt_input, fail_safe]
-    # ChatGPT Plugin ===========================================================
-
-    # gpt_param = {"engine": "text-davinci-003", "max_tokens": 3,
-    #              "temperature": 0, "top_p": 1, "stream": False,
-    #              "frequency_penalty": 0, "presence_penalty": 0, "stop": None}
-    # prompt_template = "persona/prompt_template/v2/poignancy_thought_v1.txt"
-    # prompt_input = create_prompt_input(persona, event_description)
-    # prompt = generate_prompt(prompt_input, prompt_template)
-
-    # fail_safe = get_fail_safe()
-    # output = safe_generate_response(prompt, gpt_param, 5, fail_safe,
-    #                                  __func_validate, __func_clean_up)
-
-    # if debug or verbose:
-    #   print_run_prompts(prompt_template, persona, gpt_param,
-    #                     prompt_input, prompt, output)
-
-    # return output, [output, prompt, gpt_param, prompt_input, fail_safe]
 
 
 def run_gpt_prompt_chat_poignancy(persona, event_description, test_input=None, verbose=False):
@@ -1748,24 +1672,6 @@ def run_gpt_prompt_chat_poignancy(persona, event_description, test_input=None, v
                                             __chat_func_validate, __chat_func_clean_up, True)
     if output != False:
         return output, [output, prompt, gpt_param, prompt_input, fail_safe]
-    # ChatGPT Plugin ===========================================================
-
-    # gpt_param = {"engine": "text-davinci-003", "max_tokens": 3,
-    #              "temperature": 0, "top_p": 1, "stream": False,
-    #              "frequency_penalty": 0, "presence_penalty": 0, "stop": None}
-    # prompt_template = "persona/prompt_template/v2/poignancy_chat_v1.txt"
-    # prompt_input = create_prompt_input(persona, event_description)
-    # prompt = generate_prompt(prompt_input, prompt_template)
-
-    # fail_safe = get_fail_safe()
-    # output = safe_generate_response(prompt, gpt_param, 5, fail_safe,
-    #                                  __func_validate, __func_clean_up)
-
-    # if debug or verbose:
-    #   print_run_prompts(prompt_template, persona, gpt_param,
-    #                     prompt_input, prompt, output)
-
-    # return output, [output, prompt, gpt_param, prompt_input, fail_safe]
 
 
 def run_gpt_prompt_focal_pt(persona, statements, n, test_input=None, verbose=False):
@@ -1926,24 +1832,6 @@ def run_gpt_prompt_agent_chat_summarize_ideas(persona, target_persona, statement
                                             __chat_func_validate, __chat_func_clean_up, True)
     if output != False:
         return output, [output, prompt, gpt_param, prompt_input, fail_safe]
-    # ChatGPT Plugin ===========================================================
-
-    # gpt_param = {"engine": "text-davinci-003", "max_tokens": 150,
-    #              "temperature": 0.5, "top_p": 1, "stream": False,
-    #              "frequency_penalty": 0, "presence_penalty": 0, "stop": None}
-    # prompt_template = "persona/prompt_template/v2/summarize_chat_ideas_v1.txt"
-    # prompt_input = create_prompt_input(persona, target_persona, statements, curr_context)
-    # prompt = generate_prompt(prompt_input, prompt_template)
-
-    # fail_safe = get_fail_safe()
-    # output = safe_generate_response(prompt, gpt_param, 5, fail_safe,
-    #                                  __func_validate, __func_clean_up)
-
-    # if debug or verbose:
-    #   print_run_prompts(prompt_template, persona, gpt_param,
-    #                     prompt_input, prompt, output)
-
-    # return output, [output, prompt, gpt_param, prompt_input, fail_safe]
 
 
 def run_gpt_prompt_agent_chat_summarize_relationship(persona, target_persona, statements, test_input=None,
