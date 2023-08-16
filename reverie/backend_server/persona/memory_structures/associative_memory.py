@@ -18,8 +18,8 @@ class ConceptNode:
                  s, p, o,
                  description, embedding_key, poignancy, keywords, filling):
         self.node_id = node_id
-        self.node_count = node_count
-        self.type_count = type_count
+        self.node_count = node_count  # FL: seems unnecessary
+        self.type_count = type_count  # FL: seems unnecessary
         self.type = node_type  # thought / event / chat
         self.depth = depth
 
@@ -35,7 +35,7 @@ class ConceptNode:
         self.embedding_key = embedding_key
         self.poignancy = poignancy
         self.keywords = keywords
-        self.filling = filling
+        self.filling = filling  # FL: evidence for reflection
 
     def spo_summary(self):
         return self.subject, self.predicate, self.object
